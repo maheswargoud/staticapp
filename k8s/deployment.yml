@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-pipeline
+  namespace: k8s-pipeline
+spec:
+  selector:
+    matchLabels:
+      app: deployment-pipeline
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: deployment-pipeline
+    spec:
+      containers:
+      - name: deployment-pipeline
+        image: 861531569385.dkr.ecr.us-east-2.amazonaws.com/ecr-pipeline:number
+        ports:
+        - containerPort: 80
