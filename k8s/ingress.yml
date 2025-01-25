@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+  namespace: k8s-pipeline
+spec:
+  rules:
+  - host: pipeline.maheswargoud.xyz
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: svc-pipeline
+            port: 
+              number: 80
