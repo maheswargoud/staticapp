@@ -15,8 +15,6 @@ spec:
     spec:
       containers:
       - name: deployment-pipeline
-        image: 706339012951.dkr.ecr.ap-southeast-1.amazonaws.com/staticapp:number
+        image: 355195805640.dkr.ecr.ap-south-1.amazonaws.com/ecr-pipeline:number
         ports:
         - containerPort: 80
-
-

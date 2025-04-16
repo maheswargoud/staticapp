@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('CheckOut') {
             steps {
-                git branch: 'main', url: 'git@github.com:maheswargoud/staticapp.git'
+                git branch: 'main', url: 'https://github.com/maheswargoud/staticapp'
             }
         }
         stage('DockerLogin') {
             steps {
-                sh 'aws ecr get-login-password --region ap-southeast-1 | sudo docker login --username AWS --password-stdin 706339012951.dkr.ecr.ap-southeast-1.amazonaws.com'
+                sh 'aws ecr get-login-password --region ap-south-1 | sudo docker login --username AWS --password-stdin 355195805640.dkr.ecr.ap-south-1.amazonaws.com'
             }
         }
         stage('Build') {
             steps {
-                sh 'sudo docker build -t 706339012951.dkr.ecr.ap-southeast-1.amazonaws.com/staticapp:$BUILD_NUMBER .'
+                sh 'sudo docker build -t 355195805640.dkr.ecr.ap-south-1.amazonaws.com/ecr-pipeline:$BUILD_NUMBER .'
             }
         }
         stage('Push') {
             steps {
-                sh 'sudo docker push 706339012951.dkr.ecr.ap-southeast-1.amazonaws.com/staticapp:$BUILD_NUMBER'
+                sh 'sudo docker push 355195805640.dkr.ecr.ap-south-1.amazonaws.com/ecr-pipeline:$BUILD_NUMBER'
             }
         }
         stage('Replace build number') {
