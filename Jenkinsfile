@@ -9,7 +9,7 @@ pipeline {
         }
         stage('DockerLogin') {
             steps {
-                sh 'aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com'
+                sh 'aws ecr get-login-password --region ap-northeast-1 | sudo docker login --username AWS --password-stdin 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com'
             }
         }
         stage('Build') {
