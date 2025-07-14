@@ -5,7 +5,7 @@ metadata:
   namespace: k8s-pipeline
 spec:
   rules:
-  - host: pipeline.naresh.life
+  # - host: pipeline.naresh.life
     http:
       paths:
       - pathType: Prefix
