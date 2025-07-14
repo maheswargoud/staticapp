@@ -17,11 +17,11 @@ pipeline {
                 sh 'sudo docker build -t 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com/staticapp:$BUILD_NUMBER .'
             }
         }
-        // stage('Push') {
-        //     steps {
-        //         sh 'sudo docker push 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com/staticapp:$BUILD_NUMBER'
-        //     }
-        // }
+        stage('Push') {
+            steps {
+                sh 'sudo docker push 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com/staticapp:$BUILD_NUMBER'
+            }
+        }
         // stage('Replace build number') {
         //     steps {
         //         sh 'sed -i s/number/$BUILD_NUMBER/g k8s/deployment.yml'
