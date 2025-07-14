@@ -9,17 +9,17 @@ pipeline {
         }
         stage('DockerLogin') {
             steps {
-                sh 'aws ecr get-login-password --region ap-south-1 | sudo docker login --username AWS --password-stdin 355195805640.dkr.ecr.ap-south-1.amazonaws.com'
+                sh 'aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com'
             }
         }
         stage('Build') {
             steps {
-                sh 'sudo docker build -t 355195805640.dkr.ecr.ap-south-1.amazonaws.com/ecr-pipeline:$BUILD_NUMBER .'
+                sh 'sudo docker build -t 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com/staticapp:$BUILD_NUMBER .'
             }
         }
         stage('Push') {
             steps {
-                sh 'sudo docker push 355195805640.dkr.ecr.ap-south-1.amazonaws.com/ecr-pipeline:$BUILD_NUMBER'
+                sh 'sudo docker push 102080400969.dkr.ecr.ap-northeast-1.amazonaws.com/staticapp:$BUILD_NUMBER'
             }
         }
         stage('Replace build number') {
